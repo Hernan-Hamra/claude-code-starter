@@ -2,7 +2,9 @@
 
 > Production-grade `.claude/` configuration for Claude Code. Hooks, slash commands, and sub-agents that protect your repo, enforce TDD, and capture knowledge — out of the box.
 
+[![Tests](https://github.com/Hernan-Hamra/claude-code-starter/actions/workflows/tests.yml/badge.svg)](https://github.com/Hernan-Hamra/claude-code-starter/actions/workflows/tests.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](./LICENSE)
+[![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/)
 
 ---
 

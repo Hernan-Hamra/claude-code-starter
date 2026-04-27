@@ -1,0 +1,50 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Generate release notes
+        id: notes
+        run: |
+          # Get last tag (or first commit if none)
+          LAST_TAG=$(git tag --sort=-creatordate | sed -n '2p')
+          if [ -z "$LAST_TAG" ]; then
+            LAST_TAG=$(git rev-list --max-parents=0 HEAD)
+          fi
+          echo "last_tag=$LAST_TAG" >> $GITHUB_OUTPUT
+
+          # Generate notes
+          {
+            echo "## ${GITHUB_REF#refs/tags/} — $(date +%Y-%m-%d)"
+            echo ""
+            echo "### Features"
+            git log $LAST_TAG..HEAD --pretty=format:"- %s" | grep -i "^- feat" || echo "- (sin features)"
+            echo ""
+            echo "### Fixes"
+            git log $LAST_TAG..HEAD --pretty=format:"- %s" | grep -i "^- fix" || echo "- (sin fixes)"
+            echo ""
+            echo "### Other"
+            git log $LAST_TAG..HEAD --pretty=format:"- %s" | grep -ivE "^- (feat|fix)" | head -20
+            echo ""
+            echo "**Full changelog:** [\`$LAST_TAG...${GITHUB_REF#refs/tags/}\`](https://github.com/${{ github.repository }}/compare/$LAST_TAG...${GITHUB_REF#refs/tags/})"
+          } > release_notes.md
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          body_path: release_notes.md
+          draft: false
+          prerelease: false
