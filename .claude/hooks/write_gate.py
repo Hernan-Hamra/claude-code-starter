@@ -16,7 +16,6 @@ Output JSON: {"hookSpecificOutput": {"permissionDecision": "deny", "permissionDe
 import json
 import re
 import sys
-from pathlib import PurePath
 
 
 PATRONES_BLOQUEADOS = [
