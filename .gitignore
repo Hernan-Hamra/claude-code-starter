@@ -1,0 +1,36 @@
+# Python
+__pycache__/
+*.py[cod]
+*.so
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.tox/
+.coverage
+htmlcov/
+*.egg-info/
+build/
+dist/
+
+# Virtual env
+venv/
+.venv/
+env/
+
+# Editor / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+*.swp
+*~
+
+# Claude Code session capture (local-only)
+.claude/captures.jsonl
+.claude/captures.sqlite
+
+# Local config overrides
+.claude/settings.local.json
+.claude/tdd-config.json
+.claude/session-capture.json
+.claude/doc-sync.json

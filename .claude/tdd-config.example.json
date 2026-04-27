@@ -1,0 +1,15 @@
+{
+  "watch_paths": ["src/", "lib/", "app/"],
+  "tests_dir": "tests/",
+  "test_prefix": "test_",
+  "exclude_patterns": [
+    "__init__.py",
+    "config.py",
+    "settings.py",
+    "fixtures/",
+    "_legacy_",
+    "archived/",
+    "seeds/"
+  ],
+  "enabled": true
+}

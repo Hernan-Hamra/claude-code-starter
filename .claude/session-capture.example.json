@@ -1,0 +1,24 @@
+{
+  "enabled": true,
+  "sink": "jsonl",
+  "sink_path": ".claude/captures.jsonl",
+  "min_chars": 30,
+  "trigger_keywords": [
+    "no hagas",
+    "siempre",
+    "nunca",
+    "preferimos",
+    "from now on",
+    "always",
+    "never",
+    "do not",
+    "don't",
+    "we prefer",
+    "convention",
+    "policy",
+    "regla",
+    "convencion"
+  ],
+  "skip_prefixes": ["/", "!", "$"],
+  "classifier": null
+}
